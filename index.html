@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Health Insurance Cost Estimator 2025 — ACA Marketplace Subsidy Calculator</title>
+<meta name="description" content="Estimate your 2025 ACA health insurance premium and subsidy. Enter your age, income and household size to see Bronze, Silver and Gold plan costs after tax credits. Free, instant.">
+<link rel="canonical" href="https://health-insurance-estimator.pages.dev/">
+<meta property="og:title" content="Health Insurance Cost Estimator 2025 — ACA Subsidy Calculator">
+<meta property="og:description" content="Find out how much health insurance costs after ACA subsidies. Instant estimate for Bronze, Silver and Gold plans based on your income and household size.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://health-insurance-estimator.pages.dev/">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6626869606288906" crossorigin="anonymous"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Health Insurance Cost Estimator",
+  "description": "Estimate 2025 ACA marketplace health insurance premiums and subsidies based on income, age and household size",
+  "url": "https://health-insurance-estimator.pages.dev/",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Who qualifies for ACA health insurance subsidies in 2025?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In 2025, you may qualify for a Premium Tax Credit (subsidy) if your income is between 100% and 400% of the Federal Poverty Level (FPL) — and in many states, even above 400% FPL due to enhanced subsidies. You must not have access to affordable employer-sponsored coverage and must enroll through the ACA Marketplace at healthcare.gov."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between Bronze, Silver and Gold ACA plans?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ACA metal tiers differ in how costs are split: Bronze plans have the lowest premiums but highest out-of-pocket costs (you pay ~40% of healthcare costs). Silver plans split costs 70/30 and are the only plans eligible for Cost-Sharing Reductions (CSR) if your income is under 250% FPL. Gold plans have higher premiums but lower out-of-pocket costs (80/20 split). If you qualify for CSR, Silver is almost always the best value."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When is ACA open enrollment for 2025?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ACA Open Enrollment for 2025 coverage ran November 1 – January 15, 2025. Outside open enrollment, you can only enroll if you have a qualifying life event (losing job-based coverage, getting married, having a baby, moving, etc.) which triggers a Special Enrollment Period (SEP). Some states have year-round enrollment for low-income individuals."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Medicaid and do I qualify?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Medicaid provides free or low-cost health coverage for eligible low-income adults, children, pregnant women, elderly adults, and people with disabilities. In 2025, most states that expanded Medicaid cover adults with incomes up to 138% of FPL (~$20,783 for a single person). Medicaid expansion status varies by state — 40+ states have expanded. Check your state's Medicaid office for eligibility."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long can I stay on COBRA health insurance?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "COBRA lets you keep your employer's health insurance for up to 18 months after leaving a job (36 months in some cases). The major downside: you pay the full premium — both your share and your employer's share — plus a 2% admin fee. This often costs $500–$800/month for an individual. Compare COBRA to ACA Marketplace plans, which may be significantly cheaper with subsidies."
+      }
+    }
+  ]
+}
+</script>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f8fafc;color:#0f172a;line-height:1.6}
+  header{background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;padding:28px 20px 24px;text-align:center}
+  header h1{font-size:clamp(22px,4vw,32px);font-weight:700;letter-spacing:-.5px}
+  header p{margin-top:6px;opacity:.85;font-size:15px}
+  .container{max-width:840px;margin:0 auto;padding:0 16px 60px}
+  .ad-slot{background:#f1f5f9;border:1px dashed #cbd5e1;border-radius:8px;padding:12px;text-align:center;margin:20px 0;color:#94a3b8;font-size:12px;min-height:90px;display:flex;align-items:center;justify-content:center}
+  .card{background:#fff;border-radius:12px;box-shadow:0 1px 4px rgba(0,0,0,.08);padding:28px;margin-top:24px}
+  .card h2{font-size:18px;font-weight:700;color:#1e293b;margin-bottom:20px}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:560px){.grid-2{grid-template-columns:1fr}}
+  label{display:block;font-size:13px;font-weight:600;color:#475569;margin-bottom:6px}
+  .hint{font-size:11px;color:#94a3b8;margin-top:3px}
+  .input-wrap{position:relative}
+  .prefix,.suffix{position:absolute;top:50%;transform:translateY(-50%);font-size:15px;color:#64748b;font-weight:600;pointer-events:none}
+  .prefix{left:12px}
+  .suffix{right:12px}
+  input[type=number],select{width:100%;border:1.5px solid #e2e8f0;border-radius:8px;background:#f8fafc;color:#0f172a;font-size:16px;padding:10px 12px;outline:none;transition:border-color .2s}
+  input[type=number]:focus,select:focus{border-color:#a855f7;background:#fff}
+  input.has-prefix{padding-left:28px}
+  input.has-suffix{padding-right:36px}
+  .section-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#64748b;margin:20px 0 14px;padding-bottom:6px;border-bottom:1px solid #f1f5f9}
+  .radio-group{display:flex;gap:8px;flex-wrap:wrap;margin-top:2px}
+  .radio-btn{padding:8px 16px;border:1.5px solid #e2e8f0;border-radius:8px;font-size:14px;font-weight:600;color:#64748b;background:#f8fafc;cursor:pointer;transition:all .2s}
+  .radio-btn.active{border-color:#a855f7;background:#faf5ff;color:#7c3aed}
+  .calc-btn{width:100%;margin-top:22px;padding:14px;background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;border:none;border-radius:10px;font-size:17px;font-weight:700;cursor:pointer;transition:opacity .2s}
+  .calc-btn:hover{opacity:.92}
+  #results{display:none}
+  .medicaid-banner{background:#dcfce7;border:1px solid #86efac;border-radius:10px;padding:16px 20px;text-align:center}
+  .medicaid-banner h3{font-size:17px;font-weight:700;color:#15803d}
+  .medicaid-banner p{font-size:14px;color:#166534;margin-top:6px}
+  .fpl-bar-wrap{margin-top:20px}
+  .fpl-bar-wrap h3{font-size:15px;font-weight:700;margin-bottom:10px}
+  .fpl-track{height:28px;background:#f1f5f9;border-radius:14px;overflow:hidden;display:flex;position:relative}
+  .fpl-fill{height:100%;background:linear-gradient(90deg,#7c3aed,#a855f7);border-radius:14px 0 0 14px;transition:width .5s;display:flex;align-items:center;justify-content:flex-end;padding-right:8px}
+  .fpl-fill span{color:#fff;font-size:12px;font-weight:700;white-space:nowrap}
+  .fpl-labels{display:flex;justify-content:space-between;font-size:11px;color:#94a3b8;margin-top:4px}
+  .plan-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:20px}
+  @media(max-width:520px){.plan-grid{grid-template-columns:1fr}}
+  .plan-card{border-radius:10px;padding:18px;text-align:center;position:relative;border:2px solid transparent}
+  .plan-card.bronze{background:#fef7ee;border-color:#fed7aa}
+  .plan-card.silver{background:#f8fafc;border-color:#cbd5e1}
+  .plan-card.gold{background:#fffbeb;border-color:#fde68a}
+  .plan-card .tier{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px}
+  .plan-card.bronze .tier{color:#c2410c}
+  .plan-card.silver .tier{color:#475569}
+  .plan-card.gold .tier{color:#b45309}
+  .plan-card .price-before{font-size:12px;color:#94a3b8;text-decoration:line-through}
+  .plan-card .subsidy{font-size:11px;color:#16a34a;font-weight:600;margin:2px 0}
+  .plan-card .price-after{font-size:26px;font-weight:800;line-height:1.1}
+  .plan-card.bronze .price-after{color:#c2410c}
+  .plan-card.silver .price-after{color:#475569}
+  .plan-card.gold .price-after{color:#b45309}
+  .plan-card .per{font-size:12px;color:#94a3b8}
+  .plan-card .deductible{font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid rgba(0,0,0,.06)}
+  .plan-card .csr-badge{position:absolute;top:-8px;left:50%;transform:translateX(-50%);background:#7c3aed;color:#fff;font-size:10px;font-weight:700;padding:2px 10px;border-radius:10px;white-space:nowrap}
+  .best-value{border-color:#7c3aed!important}
+  .stats-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+  .stat{background:#f8fafc;border-radius:10px;padding:14px 12px;text-align:center}
+  .stat .s-label{font-size:11px;color:#64748b;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+  .stat .s-val{font-size:20px;font-weight:800;color:#0f172a;margin-top:4px}
+  .stat .s-val.purple{color:#7c3aed}
+  .stat .s-val.green{color:#16a34a}
+  .info-box{background:#faf5ff;border:1px solid #e9d5ff;border-radius:10px;padding:14px 16px;margin-top:16px;font-size:14px;color:#6b21a8;line-height:1.7}
+  .fpl-table{width:100%;border-collapse:collapse;font-size:14px;margin-top:12px}
+  .fpl-table th{background:#faf5ff;padding:10px;text-align:left;font-size:12px;font-weight:700;color:#7c3aed;text-transform:uppercase}
+  .fpl-table td{padding:10px;border-bottom:1px solid #f1f5f9;color:#334155}
+  .faq-section h2{font-size:20px;font-weight:700;margin-bottom:16px}
+  details{border-bottom:1px solid #f1f5f9;padding:14px 0}
+  summary{font-size:15px;font-weight:600;cursor:pointer;color:#1e293b;list-style:none;display:flex;justify-content:space-between;align-items:center}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:'+';font-size:20px;color:#a855f7;font-weight:400}
+  details[open] summary::after{content:'−'}
+  details p{margin-top:10px;color:#475569;font-size:14px;line-height:1.7}
+  .disclaimer{background:#f8fafc;border-radius:8px;padding:12px 16px;font-size:12px;color:#94a3b8;margin-top:16px;line-height:1.6}
+  footer{text-align:center;color:#94a3b8;font-size:12px;padding:20px;border-top:1px solid #e2e8f0;margin-top:40px}
+  footer a{color:#64748b}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🏥 Health Insurance Cost Estimator</h1>
+  <p>2025 ACA Marketplace · Premium Tax Credits · Bronze · Silver · Gold</p>
+</header>
+
+<div class="container">
+
+  <div class="ad-slot">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6626869606288906" data-ad-slot="1122334455" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <div class="card">
+    <h2>📋 Your Information</h2>
+
+    <div class="section-label">Personal Details</div>
+    <div class="grid-2" style="margin-bottom:16px">
+      <div>
+        <label for="age">Age of Primary Applicant</label>
+        <div class="input-wrap">
+          <input type="number" id="age" value="35" min="18" max="64">
+        </div>
+      </div>
+      <div>
+        <label for="household">Household Size</label>
+        <div class="input-wrap">
+          <input type="number" id="household" value="1" min="1" max="10">
+        </div>
+        <div class="hint">Include everyone you claim on taxes</div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:16px">
+      <label for="income">Annual Household Income</label>
+      <div class="input-wrap" style="max-width:300px">
+        <span class="prefix">$</span>
+        <input type="number" id="income" class="has-prefix" value="50000" min="0" step="1000">
+      </div>
+      <div class="hint">Modified Adjusted Gross Income (MAGI). Include all household members' income.</div>
+    </div>
+
+    <div style="margin-bottom:16px">
+      <label>State Cost Region</label>
+      <div class="radio-group" id="region-group">
+        <button class="radio-btn" data-region="low" onclick="setRegion('low')">Low-cost state<br><small>IA, IN, MN, TN…</small></button>
+        <button class="radio-btn active" data-region="avg" onclick="setRegion('avg')">Average state<br><small>Most states</small></button>
+        <button class="radio-btn" data-region="high" onclick="setRegion('high')">High-cost state<br><small>NY, VT, WY, AK…</small></button>
+      </div>
+      <input type="hidden" id="region" value="avg">
+    </div>
+
+    <div>
+      <label>Tobacco Use</label>
+      <div class="radio-group" id="tobacco-group">
+        <button class="radio-btn active" data-tobacco="no" onclick="setTobacco('no')">Non-smoker</button>
+        <button class="radio-btn" data-tobacco="yes" onclick="setTobacco('yes')">Tobacco user (+up to 50%)</button>
+      </div>
+      <input type="hidden" id="tobacco" value="no">
+    </div>
+
+    <button class="calc-btn" onclick="calculate()">Estimate My Health Insurance Cost →</button>
+  </div>
+
+  <!-- Results -->
+  <div id="results">
+
+    <!-- Medicaid banner (shown if eligible) -->
+    <div class="card" id="medicaid-card" style="display:none">
+      <div class="medicaid-banner">
+        <h3>✅ You may qualify for Medicaid (free coverage)</h3>
+        <p>Based on your income and household size, you may be eligible for Medicaid in states that expanded coverage. Visit <strong>healthcare.gov</strong> or your state's Medicaid office to apply. Coverage is typically free or very low-cost.</p>
+      </div>
+    </div>
+
+    <div class="card" id="main-results-card">
+      <!-- FPL bar -->
+      <div class="fpl-bar-wrap">
+        <h3>Your Income vs. Federal Poverty Level (FPL)</h3>
+        <div class="fpl-track">
+          <div class="fpl-fill" id="fpl-fill"><span id="fpl-label">0%</span></div>
+        </div>
+        <div class="fpl-labels">
+          <span>0%</span>
+          <span>100% (Medicaid)</span>
+          <span>250% (CSR)</span>
+          <span>400%+</span>
+        </div>
+      </div>
+
+      <div class="stats-row" style="margin-top:16px">
+        <div class="stat">
+          <div class="s-label">Your FPL %</div>
+          <div class="s-val purple" id="stat-fpl">0%</div>
+        </div>
+        <div class="stat">
+          <div class="s-label">Est. Monthly Subsidy</div>
+          <div class="s-val green" id="stat-subsidy">$0</div>
+        </div>
+      </div>
+
+      <!-- Plan cards -->
+      <div class="plan-grid" id="plan-grid" style="margin-top:20px"></div>
+
+      <div class="info-box" id="info-box"></div>
+
+      <div class="disclaimer">
+        ⚠️ <strong>Estimates only.</strong> Actual premiums depend on your specific zip code, insurer, plan, and exact income. Verify at <a href="https://www.healthcare.gov" target="_blank" rel="noopener">healthcare.gov</a> or your state marketplace. This tool uses 2025 benchmark averages and IRS contribution tables.
+      </div>
+    </div>
+  </div>
+
+  <div class="ad-slot">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6626869606288906" data-ad-slot="2233445566" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <!-- FPL Reference table -->
+  <div class="card">
+    <h2>📊 2025 Federal Poverty Level (FPL) Reference</h2>
+    <table class="fpl-table">
+      <thead><tr><th>Household Size</th><th>100% FPL</th><th>138% (Medicaid)</th><th>250% FPL (CSR)</th><th>400% FPL</th></tr></thead>
+      <tbody>
+        <tr><td>1 person</td><td>$15,060</td><td>$20,783</td><td>$37,650</td><td>$60,240</td></tr>
+        <tr><td>2 people</td><td>$20,440</td><td>$28,207</td><td>$51,100</td><td>$81,760</td></tr>
+        <tr><td>3 people</td><td>$25,820</td><td>$35,631</td><td>$64,550</td><td>$103,280</td></tr>
+        <tr><td>4 people</td><td>$31,200</td><td>$43,056</td><td>$78,000</td><td>$124,800</td></tr>
+        <tr><td>5 people</td><td>$36,580</td><td>$50,480</td><td>$91,450</td><td>$146,320</td></tr>
+        <tr><td>6 people</td><td>$41,960</td><td>$57,905</td><td>$104,900</td><td>$167,840</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:#94a3b8;margin-top:10px">FPL figures for 48 contiguous states + D.C. (2025). Alaska and Hawaii have higher FPL thresholds.</p>
+  </div>
+
+  <div class="ad-slot">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6626869606288906" data-ad-slot="3344556677" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <!-- FAQ -->
+  <div class="card faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <details open>
+      <summary>Who qualifies for ACA health insurance subsidies in 2025?</summary>
+      <p>In 2025, you may qualify for a Premium Tax Credit (subsidy) if your income is between 100% and 400% of the Federal Poverty Level (FPL) — and in many states, even above 400% FPL due to enhanced subsidies. You must not have access to affordable employer-sponsored coverage and must enroll through the ACA Marketplace at healthcare.gov.</p>
+    </details>
+    <details>
+      <summary>What is the difference between Bronze, Silver and Gold ACA plans?</summary>
+      <p>ACA metal tiers differ in how costs are split: Bronze plans have the lowest premiums but highest out-of-pocket costs (you pay ~40% of healthcare costs). Silver plans split costs 70/30 and are the only plans eligible for Cost-Sharing Reductions (CSR) if your income is under 250% FPL. Gold plans have higher premiums but lower out-of-pocket costs (80/20 split). If you qualify for CSR, Silver is almost always the best value.</p>
+    </details>
+    <details>
+      <summary>When is ACA open enrollment for 2025?</summary>
+      <p>ACA Open Enrollment for 2025 coverage ran November 1 – January 15, 2025. Outside open enrollment, you can only enroll if you have a qualifying life event (losing job-based coverage, getting married, having a baby, moving, etc.) which triggers a Special Enrollment Period (SEP). Some states have year-round enrollment for low-income individuals.</p>
+    </details>
+    <details>
+      <summary>What is Medicaid and do I qualify?</summary>
+      <p>Medicaid provides free or low-cost health coverage for eligible low-income adults, children, pregnant women, elderly adults, and people with disabilities. In 2025, most states that expanded Medicaid cover adults with incomes up to 138% of FPL (~$20,783 for a single person). Medicaid expansion status varies by state — 40+ states have expanded. Check your state's Medicaid office for eligibility.</p>
+    </details>
+    <details>
+      <summary>How long can I stay on COBRA health insurance?</summary>
+      <p>COBRA lets you keep your employer's health insurance for up to 18 months after leaving a job (36 months in some cases). The major downside: you pay the full premium — both your share and your employer's share — plus a 2% admin fee. This often costs $500–$800/month for an individual. Compare COBRA to ACA Marketplace plans, which may be significantly cheaper with subsidies.</p>
+    </details>
+  </div>
+
+  <div class="ad-slot">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6626869606288906" data-ad-slot="4455667788" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+</div>
+
+<footer>
+  <p>HealthInsuranceEstimator · Estimates only. Verify at healthcare.gov. Not a substitute for professional advice.</p>
+  <p style="margin-top:6px"><a href="/privacy.html">Privacy Policy</a></p>
+</footer>
+
+<script>
+// 2025 FPL base figures (48 contiguous states)
+const FPL_BASE = 15060;
+const FPL_EXTRA = 5380;
+
+// Age rating factors (simplified — actual vary by state, but approximate)
+function ageFactor(age) {
+  if (age < 21) return 0.635;
+  if (age < 25) return 0.685;
+  if (age < 30) return 0.746;
+  if (age < 35) return 0.801;
+  if (age < 40) return 0.851;
+  if (age < 45) return 0.965;
+  if (age < 50) return 1.135;
+  if (age < 55) return 1.362;
+  if (age < 60) return 1.635;
+  if (age < 65) return 1.786;
+  return 1.786;
+}
+
+// 2025 benchmark Silver plan base premium (age 21, per month, by region)
+// Based on average national second-lowest-cost Silver plan data
+const BENCHMARK = { low: 320, avg: 420, high: 560 };
+
+// IRS 2025 contribution table (% of income you pay for benchmark plan)
+// Based on ACA sliding scale
+function getContribPct(fplPct) {
+  if (fplPct <= 1.0) return 0;
+  if (fplPct <= 1.33) return 0.0; // under 133% — near-zero (Medicaid threshold)
+  if (fplPct <= 1.50) return 0.01;
+  if (fplPct <= 2.00) return 0.02;
+  if (fplPct <= 2.50) return 0.03;
+  if (fplPct <= 3.00) return 0.04;
+  if (fplPct <= 4.00) return 0.06;
+  return 0.085; // above 400% FPL — 8.5% cap (enhanced subsidy extended 2025)
+}
+
+// Plan multipliers vs benchmark Silver
+const PLAN = {
+  bronze: { mult: 0.70, deductible: '$7,000', oop: '$9,450', share: '60/40' },
+  silver: { mult: 1.00, deductible: '$3,500', oop: '$8,700', share: '70/30' },
+  gold:   { mult: 1.25, deductible: '$1,500', oop: '$6,500', share: '80/20' }
+};
+
+let regionVal = 'avg';
+let tobaccoVal = 'no';
+
+function setRegion(v) {
+  regionVal = v;
+  document.querySelectorAll('#region-group .radio-btn').forEach(b => b.classList.toggle('active', b.dataset.region === v));
+  document.getElementById('region').value = v;
+}
+function setTobacco(v) {
+  tobaccoVal = v;
+  document.querySelectorAll('#tobacco-group .radio-btn').forEach(b => b.classList.toggle('active', b.dataset.tobacco === v));
+  document.getElementById('tobacco').value = v;
+}
+
+const fmt = n => '$' + Math.round(n).toLocaleString('en-US');
+
+function calculate() {
+  const age = parseInt(document.getElementById('age').value) || 35;
+  const household = parseInt(document.getElementById('household').value) || 1;
+  const income = parseFloat(document.getElementById('income').value) || 0;
+  const region = document.getElementById('region').value;
+  const tobacco = document.getElementById('tobacco').value;
+
+  // FPL calculation
+  const fpl = FPL_BASE + (household - 1) * FPL_EXTRA;
+  const fplPct = income / fpl;
+
+  // Check Medicaid eligibility (138% FPL in expansion states)
+  const medicaidEligible = fplPct <= 1.38 && income > 0;
+
+  // Benchmark Silver premium (age-adjusted)
+  const af = ageFactor(age);
+  let benchmarkPremium = BENCHMARK[region] * af;
+  if (tobacco === 'yes') benchmarkPremium *= 1.35; // avg tobacco surcharge
+
+  // Subsidy calculation
+  const contribPct = getContribPct(fplPct);
+  const maxContrib = (income * contribPct) / 12; // max monthly you pay for Silver
+  const monthlySubsidy = Math.max(0, benchmarkPremium - maxContrib);
+
+  // Show/hide medicaid banner
+  document.getElementById('medicaid-card').style.display = medicaidEligible ? 'block' : 'none';
+
+  // FPL bar
+  const barPct = Math.min(fplPct / 4.5 * 100, 100);
+  document.getElementById('fpl-fill').style.width = barPct + '%';
+  document.getElementById('fpl-label').textContent = (fplPct * 100).toFixed(0) + '% FPL';
+  document.getElementById('stat-fpl').textContent = (fplPct * 100).toFixed(0) + '%';
+  document.getElementById('stat-subsidy').textContent = fmt(monthlySubsidy) + '/mo';
+
+  // Plan cards
+  const planGrid = document.getElementById('plan-grid');
+  planGrid.innerHTML = '';
+  const csrEligible = fplPct >= 1.0 && fplPct <= 2.50;
+
+  const plans = [
+    { key: 'bronze', label: 'Bronze', ...PLAN.bronze },
+    { key: 'silver', label: 'Silver', ...PLAN.silver },
+    { key: 'gold',   label: 'Gold',   ...PLAN.gold }
+  ];
+
+  plans.forEach(plan => {
+    let beforeSubsidy = benchmarkPremium * plan.mult;
+    let afterSubsidy = Math.max(0, beforeSubsidy - monthlySubsidy);
+    const isBest = (csrEligible && plan.key === 'silver') || (!csrEligible && fplPct > 2.5 && plan.key === 'silver');
+
+    const div = document.createElement('div');
+    div.className = `plan-card ${plan.key}${isBest ? ' best-value' : ''}`;
+
+    let csrHtml = (plan.key === 'silver' && csrEligible)
+      ? '<div class="csr-badge">CSR eligible ★</div>' : '';
+
+    div.innerHTML = `
+      ${csrHtml}
+      <div class="tier">${plan.label} Plan</div>
+      <div class="price-before">${fmt(beforeSubsidy)}/mo</div>
+      <div class="subsidy">− ${fmt(monthlySubsidy)} subsidy</div>
+      <div class="price-after">${fmt(afterSubsidy)}</div>
+      <div class="per">/month after subsidy</div>
+      <div class="deductible">
+        Deductible: ${plan.deductible}<br>
+        Max OOP: ${plan.oop}<br>
+        Cost split: ${plan.share}
+      </div>
+    `;
+    planGrid.appendChild(div);
+  });
+
+  // Info box
+  const infoEl = document.getElementById('info-box');
+  if (income === 0) {
+    infoEl.textContent = '';
+  } else if (medicaidEligible) {
+    infoEl.textContent = '💡 At your income level, you likely qualify for Medicaid — which provides free or near-free coverage. Apply through healthcare.gov or your state\'s Medicaid office.';
+  } else if (csrEligible) {
+    infoEl.textContent = '💡 You qualify for Cost-Sharing Reductions (CSR). Always choose a Silver plan to access CSR — it lowers your deductible and out-of-pocket maximum significantly, making Silver the best value at your income.';
+  } else if (fplPct > 4.0) {
+    infoEl.textContent = '💡 Enhanced subsidies (IRA 2022, extended through 2025) cap your premium at 8.5% of income regardless of FPL. Even at higher incomes, you may receive some subsidy. Check healthcare.gov for your exact plan options.';
+  } else {
+    infoEl.textContent = '💡 Your subsidy is based on the benchmark Silver plan cost. You can apply this subsidy to any metal tier — buying a Bronze plan may result in $0/month premiums after subsidy.';
+  }
+
+  document.getElementById('results').style.display = 'block';
+  document.getElementById('results').scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+window.addEventListener('DOMContentLoaded', calculate);
+</script>
+</body>
+</html>
